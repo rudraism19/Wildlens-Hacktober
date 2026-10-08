@@ -1,0 +1,30 @@
+{
+  "name": "WildLens — Nature Exploration",
+  "short_name": "WildLens",
+  "description": "See nature. Understand it. Then put your phone away. AI-powered outdoor explorer built for the Touch Grass challenge.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08100b",
+  "theme_color": "#0d1914",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
