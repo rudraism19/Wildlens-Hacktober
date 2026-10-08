@@ -11,6 +11,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Forest_Theme-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
 
+<p align="center">
+  <img src="public/poster-landscape.jpg" alt="WildLens Official Landscape Banner" width="100%" style="border-radius: 16px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);" />
+</p>
+
 ---
 
 ## What I Built
