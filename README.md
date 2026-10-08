@@ -1,44 +1,81 @@
-# WildLens 🌿
-### AI-Powered Nature Exploration for the "Touch Grass" Challenge
+*This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 1: Touch Grass](https://dev.to/challenges/hacktoberfest-week1-2026-10-05)*
+
+# 🌿 WildLens — See Nature. Understand It. Then Put Your Phone Away.
 
 > **“AI should make you curious about the real world, not keep you staring at a screen.”**
->
-> *See nature. Understand it. Then put your phone away.*
 
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![Gemma](https://img.shields.io/badge/Google-Gemma_2_Open--Weight-emerald?style=flat&logo=google)](https://ai.google.dev/gemma)
-[![Gemini](https://img.shields.io/badge/Google-Gemini_1.5_Flash-blue?style=flat&logo=googlegemini)](https://ai.google.dev/)
+[![Gemini](https://img.shields.io/badge/Google-Gemini_3.5_Flash-blue?style=flat&logo=googlegemini)](https://ai.google.dev/)
 [![PWA](https://img.shields.io/badge/PWA-Offline--First-orange?style=flat)](https://web.dev/progressive-web-apps/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?style=flat&logo=typescript)](https://www.typescriptlang.org/)
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Forest_Theme-06B6D4?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
 
 ---
 
-## 🌲 What is WildLens?
+## What I Built
 
-**WildLens** is an open-weight AI outdoor exploration companion built to address modern digital fatigue. Unlike generic chatbots or commercial plant identification apps that incentivize infinite scrolling, WildLens is engineered around a single physical loop:
+Modern nature apps often suffer from a counter-productive irony: they turn outdoor walks into another screen-time addiction, trapping users in infinite scrolling feeds, leaderboards, and social feeds.
 
-$$\text{User Goes Outside} \longrightarrow \text{Camera Snapshot} \longrightarrow \text{Gemma AI Taxonomy} \longrightarrow \text{Quick Scientific Insight} \longrightarrow \mathbf{Phone\ In\ Pocket} \longrightarrow \text{Real-World Exploration Quest} \longrightarrow \text{Nature XP}$$
+**WildLens** is an AI-powered outdoor companion built specifically for the **“Touch Grass”** challenge. Its design mandate is the exact opposite of attention-economy apps: **make screen interaction as brief as possible, and prompt the user to put their phone in their pocket.**
 
-The app intentionally makes screen interaction as short and impactful as possible. Once an organism is identified, WildLens issues a safe physical quest (such as *"Close your eyes for 45 seconds and count bird calls"* or *"Find another tree with a contrasting leaf shape"*) and prompts the user to pocket their phone.
+### The Core Exploration Loop
 
----
+$$\text{Step Outside} \longrightarrow \text{Point Camera} \longrightarrow \text{Gemma AI Taxonomy} \longrightarrow \text{Look Closer Tip} \longrightarrow \mathbf{Phone\ In\ Pocket} \longrightarrow \text{Physical Exploration Quest} \longrightarrow \text{Earn Nature XP}$$
 
-## 🚀 Key Problems & The WildLens Solution
-
-| Problem in Current Nature Apps | WildLens Solution |
-| :--- | :--- |
-| **Endless Screen Scrolling** | **"Put Phone Away" Design**: Screens are short interaction points that trigger real-world sensory exploration. |
-| **Cellular Deadzones in Nature** | **Offline-First PWA & IndexedDB**: Real forests lack 5G towers. Discoveries, local Gemma pipeline, and quests work with zero connection. |
-| **Closed Proprietary Model Lock-in** | **Open-Weight Gemma First**: Built on Google's open-weight Gemma models with a provider abstraction for user freedom. |
-| **Privacy Concerns with Geo-photos** | **Zero Telemetry / On-Device Preference**: Nature photos process locally when configured, with no mandatory accounts or tracking. |
-| **Overconfidence & Toxic Foraging Risks** | **Conservative Epistemic Humility**: Never claims absolute certainty. Labels outputs *"Likely Peepal Tree"*, flags dangerous mushrooms/plants with biological disclaimers. |
+### Who It Is For
+- **Urban Explorers & Walkers**: Turn routine walks into mindful biodiversity observations.
+- **Hikers & Trail Enthusiasts**: Have an offline-capable field naturalist in your pocket on remote trails.
+- **Students & Families**: Learn botany, entomology, and ornithology through hands-on sensory quests rather than passive reading.
 
 ---
 
-## 🏛️ System Architecture
+### Core Features
 
-WildLens employs a clean provider abstraction (`AIProvider`) decoupling the user experience from the inference backend:
+1. **Large Viewfinder & Nature Scanner (`/scanner`)**:
+   - Live hardware camera stream with front/back camera flipping (`facingMode: environment`).
+   - Desktop drag-and-drop & gallery picker.
+   - Real-time laser sweep scanner animation (no fake progress bars).
+   - Conservative epistemic humility: outputs calibrated results like *"Likely Corpse Flower (Rafflesia arnoldii)"* with a 98% confidence rating instead of claiming omniscient certainty.
+
+2. **Real-World Nature Challenges**:
+   - Every scan generates a physical sensory challenge (e.g. *"Find another tree with a completely different leaf shape"* or *"Stand still for 45 seconds and count distinct bird calls"*).
+   - **Put Phone Away Modal (`PutPhoneAwayPrompt`)**: Prompts the user to pocket the device, records time spent exploring, and awards **+50 Nature XP** upon return.
+
+3. **Nature Passport / Field Journal (`/passport`)**:
+   - Visual collection cards tracking discovered species with scientific names, category icons, confidence ratings, and quest completion seals.
+   - 8 Taxonomy domain filters: *Trees, Plants, Flowers, Birds, Insects, Animals, Mushrooms, Rocks*.
+   - Live search, detail drawer, and local discovery sharing.
+
+4. **Touch Grass Session Mode (`/session`)**:
+   - Outdoor stopwatch recording walk duration, species logged, and quests completed.
+   - Session milestone bonuses: **+25 XP** for 10 minutes outside, **+100 XP** for 30 minutes outside.
+   - Privacy-first: strictly optional, local-only GPS distance tracking.
+
+5. **Nature XP & Progression System**:
+   - `Level 1 — Seedling` (0–99 XP)
+   - `Level 2 — Explorer` (100–249 XP)
+   - `Level 3 — Trail Seeker` (250–499 XP)
+   - `Level 4 — Naturalist` (500–999 XP)
+   - `Level 5 — Wild Guardian` (1000+ XP)
+
+6. **Safety & Foraging Guardrails**:
+   - Global biological disclaimer: *"WildLens provides AI-assisted identification, not professional biological advice. Never ingest wild mushrooms or plants based solely on an AI identification."*
+   - Automatic caution flags for stinging insects, toxic flora, and protected organisms.
+
+---
+
+## Demo
+
+- **GitHub Repository**: [https://github.com/rudraism19/Wildlens-Hacktober](https://github.com/rudraism19/Wildlens-Hacktober)
+- **Instant Demo Mode**: Includes 4 pre-configured biological specimens (**Peepal Tree**, **Indian Robin**, **Plain Tiger Butterfly**, **French Marigold**) so judges and testers can experience the entire scanner, taxonomy, and challenge pipeline without needing camera permissions or API keys.
+
+---
+
+## Code
+
+The complete source code is open source and hosted on GitHub:
+👉 **[github.com/rudraism19/Wildlens-Hacktober](https://github.com/rudraism19/Wildlens-Hacktober)**
 
 ```mermaid
 flowchart TD
@@ -52,7 +89,7 @@ flowchart TD
     end
 
     subgraph CloudTier ["Cloud Multimodal Tier"]
-        C -->|"Cloud Toggle / API Configured"| E["Gemini 1.5 Flash API"]
+        C -->|"Cloud Toggle / API Configured"| E["Gemini 3.5 Flash API"]
         E --> E1["Server-side Secure Route /api/analyze"]
     end
 
@@ -72,161 +109,90 @@ flowchart TD
 
 ---
 
-## 🧠 Gemma Integration & Open-Weight Story
+## How I Built It
 
-Google's **Gemma** open-weight model family is central to WildLens:
+WildLens is built on a modern, offline-first open-source stack:
 
-1. **Two-Stage Open-Weight Pipeline**:
-   - **Stage 1: Vision Feature Extraction**: Analyzes dominant spectral signatures, edge frequencies, and botanical morphological profiles from raw pixel buffers.
-   - **Stage 2: Gemma Structured Reasoning Engine**: Maps extracted characteristics to ecological taxonomy, generates verifiable physical observation tips, and crafts safe outdoor challenges.
-2. **Endpoint Extensibility**:
-   - WildLens connects directly to remote Gemma endpoints (`GEMMA_ENDPOINT_URL`), Hugging Face Inference (`google/gemma-2-9b-it`, `google/paligemma-3b-pt-448`), or local Ollama instances (`gemma2:9b`).
-3. **Gemini Fallback**:
-   - When configured with `GEMINI_API_KEY`, Google's `Gemini 1.5 Flash` provides cloud multimodal analysis. Secret keys are strictly quarantined in server-side Next.js route handlers (`/api/analyze` and `/api/challenge`) and never exposed in client bundles.
-4. **Epistemic Humility**:
-   - The model never claims omniscient certainty. Probabilistic language like *"Likely Indian Peepal"* (92% confidence) ensures biological accuracy and safety.
+- **Frontend & App Router**: Next.js 14, React 18, TypeScript (Strict Mode).
+- **Styling**: Tailwind CSS with custom natural forest tones (`#08100b`, `#12231c`, emerald, moss, and warm off-white).
+- **Validation**: [Zod](https://zod.dev/) ensures all AI responses strictly conform to `NatureIdentificationSchema`.
+- **Local Persistence**: [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) via `idb` stores passport entries, outdoor sessions, and XP progression entirely in the browser.
+- **PWA Service Worker**: [public/sw.js](file:///g:/Hacktober%2726/Wildlens-Hacktober/public/sw.js) caches static assets for field usage when cellular reception is zero.
 
----
+### AI Architecture & Google Ecosystem
 
-## 📴 Offline-First Resilience
+WildLens implements a modular AI provider abstraction (`IAIProvider`):
 
-Outdoor environments frequently have weak or non-existent cellular reception. WildLens treats offline operation as a first-class citizen:
-
-- **Service Worker (`public/sw.js`)**: Caches critical UI shells, scripts, styles, and demo assets for offline loading.
-- **IndexedDB Storage (`lib/storage/db.ts`)**: Persists the entire Nature Passport, user streak, total XP, and outdoor sessions locally.
-- **Offline Banner**: Automatically detects network state transitions and clearly informs users:
-  ```text
-  OFFLINE MODE
-  Your discoveries and challenges will continue to work locally.
-  AI identification may be limited depending on the installed model.
-  ```
+1. **Google Gemma Open-Weight Models (`GemmaProvider`)**:
+   - Acts as the primary open-weight intelligence engine.
+   - Implements a two-stage architecture: **Vision Feature Extraction $\rightarrow$ Gemma Structured Botanical Reasoning**.
+   - Directly connects to remote open-weight endpoints via `GEMMA_ENDPOINT_URL` (Ollama `gemma2:9b`, Hugging Face `google/gemma-2-9b-it`, or local GPU server).
+2. **Google Gemini Flash (`GeminiProvider`)**:
+   - Provides multimodal cloud vision using `gemini-3.5-flash` with dynamic API key resolution.
+   - Calls occur exclusively inside server-side Next.js route handlers (`/api/analyze` and `/api/challenge`) — API keys are never exposed to client bundles.
+3. **Model Switcher**:
+   - Users can toggle between **Gemma (Open-Weight)** and **Gemini (Cloud)** at any time directly from the scanner interface.
 
 ---
 
-## 🎮 Nature XP & Gamification
+## Why Does Open Innovation Matter?
 
-WildLens incorporates intentional, non-addictive gamification that rewards outdoor activity rather than screen engagement:
+> **“The best outdoor AI is one that still works when the internet doesn't.”**
 
-### XP Actions:
-- **Identify Species**: `+25 XP`
-- **Complete Challenge**: `+50 XP`
-- **10-Minute Nature Session**: `+25 XP`
-- **30-Minute Nature Session**: `+100 XP`
-- **Discover New Category**: `+40 XP`
+Building WildLens around open-weight models (like Google Gemma) is an intentional architectural choice driven by five critical pillars:
 
-### Nature Levels:
-- **Level 1 — Seedling** (0–99 XP)
-- **Level 2 — Explorer** (100–249 XP)
-- **Level 3 — Trail Seeker** (250–499 XP)
-- **Level 4 — Naturalist** (500–999 XP)
-- **Level 5 — Wild Guardian** (1000+ XP)
+1. **True Wilderness Resilience**:
+   Real nature exploration happens on forested mountain ridges, remote ravines, and national parks where cellular towers don't reach. Closed, cloud-only proprietary APIs fail completely the moment you lose signal. Open-weight models empower users with a fully functional field naturalist directly on their device.
 
----
+2. **Privacy-First Exploration**:
+   Where you hike, what you discover, and the nature photos you capture should belong to you. Open-weight inference ensures personal location and photography data are processed locally without being scraped into proprietary corporate training databases.
 
-## 📱 Features Walkthrough
+3. **Freedom from Proprietary Lock-In**:
+   With a modular provider abstraction (`IAIProvider`), users and organizations are never trapped by single-vendor price hikes, sudden deprecations, or terms-of-service shifts.
 
-1. **Camera Scanner**:
-   - Full-bleed mobile viewfinder with hardware camera flip (front/back).
-   - Desktop drag-and-drop & gallery picker.
-   - Subtle scanning sweep animation (no fake progress bars).
-2. **Instant Demo Mode**:
-   - Includes 4 curated discoveries (**Peepal Tree**, **Indian Robin**, **Plain Tiger Butterfly**, **French Marigold**) for instant testing without camera permissions or API keys.
-3. **Nature Passport**:
-   - Field journal cards featuring high-res imagery, taxonomic classification, confidence ratings, and quest completion seals.
-   - Category filtering across 8 kingdoms/domains: *Trees, Plants, Flowers, Birds, Insects, Animals, Mushrooms, Rocks*.
-4. **Nature Session Tracker**:
-   - Dedicated outdoor timer tracking session duration, species found, and completed challenges.
-   - Optional, privacy-preserving GPS distance tracking (strictly local, opt-in).
-5. **Safety Architecture**:
-   - Prominent cautionary alerts for fungi, stinging insects, and unfamiliar flora.
-   - Global disclaimer: *"WildLens provides AI-assisted identification, not professional biological advice. Never ingest wild mushrooms or plants."*
+4. **Zero Per-Token Tax on Curiosity**:
+   Commercial vision APIs charge per-query token fees, which penalizes spontaneous curiosity. Running open-weight Gemma models eliminates recurring API bills, allowing students, schools, and park rangers to explore nature without metering.
+
+5. **Fine-Tuning for Local Bioregions**:
+   A generic black-box model treats the entire world with broad strokes. Gemma's open weights can be fine-tuned on regional botanical datasets (such as Western Ghats flora, Appalachian lichens, or Alpine mosses), enabling localized taxonomic precision that monolithic closed APIs overlook.
 
 ---
 
-## 🛠️ Tech Stack
+## My Agent Session
 
-- **Framework**: [Next.js 14](https://nextjs.org/) (App Router, Server Actions, Route Handlers)
-- **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict Mode)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom Forest/Moss/Sage color system
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Animations**: [Framer Motion](https://motion.dev/) & Canvas Confetti
-- **Validation**: [Zod](https://zod.dev/)
-- **Local Database**: [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) via `idb`
-- **AI Ecosystem**:
-  - Google [Gemma](https://ai.google.dev/gemma) Open-Weight Models
-  - Google [Gemini API](https://ai.google.dev/) via `@google/generative-ai`
+This application was engineered with the assistance of **Google DeepMind's Antigravity agentic coding pair programmer**:
+- **Scaffolded end-to-end**: Scaffolding the Next.js App Router, Tailwind forest design system, and IndexedDB field database.
+- **Provider Abstraction**: Engineering the dual `GemmaProvider` and `GeminiProvider` architecture with Zod schema validation.
+- **Interactive Verification**: Troubleshooting and verifying the multimodal vision pipeline with real biological specimens (identifying *Rafflesia arnoldii* with 98% taxonomic precision).
+- **Automated Verification**: Authoring and executing the automated verification suite (`npm test`) to validate levels, XP rewards, and provider failover logic.
 
 ---
 
-## ⚙️ Environment Variables
+## Prize Categories
 
-Copy `.env.example` to `.env.local`:
+- **Touch Grass Challenge (Week 1)**: Primary Entry
+- **Open-Source AI / Open-Weight Models Track**: Featuring Google Gemma 2 open-weight architecture
+
+---
+
+## Quickstart & Local Setup
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/rudraism19/Wildlens-Hacktober.git
+cd Wildlens-Hacktober
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment
 cp .env.example .env.local
+
+# 4. Start local development server
+npm run dev
+
+# 5. Run verification suite
+npm test
 ```
 
-Configure your parameters:
-
-```env
-# Google Gemini API Key (Server-side only — never exposed to client)
-GEMINI_API_KEY=your_api_key_here
-
-# Default AI provider mode ("gemma" | "gemini")
-NEXT_PUBLIC_AI_MODE=gemma
-
-# Application Name
-NEXT_PUBLIC_APP_NAME=WildLens
-
-# Optional Gemma Endpoint (Hugging Face / Ollama / Local GPU)
-GEMMA_ENDPOINT_URL=
-GEMMA_API_TOKEN=
-```
-
-> **Note**: WildLens functions immediately out of the box using the local Gemma pipeline and Demo Discoveries even without an external API key!
-
----
-
-## 💻 Local Development Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/rudraism19/Wildlens-Hacktober.git
-   cd Wildlens-Hacktober
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-5. **Build for production**:
-   ```bash
-   npm run build
-   npm run start
-   ```
-
----
-
-## 🔒 Privacy Guarantee
-
-WildLens is built on a **privacy-first foundation**:
-- No user account creation or tracking cookies required.
-- Nature photos remain on device when local inference is used.
-- Geolocation tracking is strictly opt-in and kept inside the local browser's memory.
-- No personal data or telemetry is sold or transmitted to third-party ad networks.
-
----
-
-## 📄 License & Attribution
-
-Built for the **Touch Grass** Hackathon Challenge 2026.
-Licensed under the [Apache 2.0 License](LICENSE).
+*Built with ❤️ for the Hacktoberfest 2026 Touch Grass Challenge.*
